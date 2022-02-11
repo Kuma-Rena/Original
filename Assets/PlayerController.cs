@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
             inputVelocityX = this.velocityX;
    
         }
-        //Unity‚¿‚á‚ñ‚É‘¬“x‚ğ—^‚¦‚éi•ÏXj
+        
         this.rigid2D.velocity = new Vector2(inputVelocityX, 0);
     }
 }
