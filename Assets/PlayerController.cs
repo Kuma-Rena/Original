@@ -8,8 +8,8 @@ public class PlayerController : MonoBehaviour
  
     Rigidbody2D rigid2D;
     Animation anim;
-    Animator animator;
-    private float velocityX = 10f;
+    Animator animator = null;
+    private float velocityX = 1.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
         float inputVelocityX = 0;        
         this.rigid2D = GetComponent<Rigidbody2D>();
         anim=this.gameObject.GetComponent<Animation>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -27,12 +28,17 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             inputVelocityX = -this.velocityX;
- 
+            animator.SetBool("left", true);
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
             inputVelocityX = this.velocityX;
-   
+            animator.SetBool("right", true);
+        }
+        else
+        {
+            animator.SetBool("left", false);
+            animator.SetBool("right", false);
         }
         
         this.rigid2D.velocity = new Vector2(inputVelocityX, 0);
