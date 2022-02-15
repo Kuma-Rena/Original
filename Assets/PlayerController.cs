@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    
- 
     Rigidbody2D rigid2D;
     Animation anim;
     Animator animator = null;
     private float velocityX = 1.0f;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +24,7 @@ public class PlayerController : MonoBehaviour
     {
         
         float inputVelocityX = 0;
+        //Player移動＆アニメーション
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             inputVelocityX = -this.velocityX;
@@ -43,4 +43,7 @@ public class PlayerController : MonoBehaviour
         
         this.rigid2D.velocity = new Vector2(inputVelocityX, 0);
     }
+
+    
+
 }
