@@ -9,14 +9,21 @@ public class SeachItem : MonoBehaviour
     public GameObject HintObject = null;
     Text Hint_text;
     public static bool flag = false;
+    private bool onItem = false;
 
-
-    void OnTriggerStay2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-
         this.Hint_text = HintObject.GetComponent<Text>();
         Hint_text.text = "スペースキーで調べる";
 
+        onItem = true;
+    }
+
+    void Update()
+    {
+        if ( onItem == false ) return;
+
+        this.Hint_text = HintObject.GetComponent<Text>();
 
         if (Input.GetKey(KeyCode.Space))
         {
@@ -39,10 +46,13 @@ public class SeachItem : MonoBehaviour
             }
         }
     }
+
     void OnTriggerExit2D(Collider2D other)
     {
         this.Hint_text = HintObject.GetComponent<Text>();
         Hint_text.text = "";
+
+        onItem = false;
     }
 
 }
